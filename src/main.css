@@ -1,0 +1,23 @@
+body {
+  font-family: 'Quicksand', sans-serif !important; }
+
+.dashboard-form-btn {
+  font-size: 0.8rem !important;
+  margin-bottom: 1rem; }
+
+.dashboard-form-lan-inputField:hover, .dashboard-form-lan-inputField:focus {
+  background-color: white !important;
+  color: black !important; }
+
+.lan-table {
+  height: 311px;
+  overflow-y: scroll; }
+
+.homeContainer-form {
+  margin-top: 25%; }
+
+.Dashboard {
+  height: 100%; }
+
+.Home {
+  height: 100vh; }

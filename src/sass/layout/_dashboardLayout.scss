@@ -1,0 +1,17 @@
+.dashboard-form {
+  &-btn {
+    font-size: 0.8rem !important;
+    margin-bottom: 1rem;
+  }
+
+  &-lan-inputField:hover,
+  &-lan-inputField:focus {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
+.lan-table {
+  height: 311px;
+  overflow-y: scroll;
+}
