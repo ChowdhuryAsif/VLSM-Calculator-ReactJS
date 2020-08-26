@@ -88,7 +88,9 @@ const DashboardLayout = () => {
     for (let i = 0; i < lanList.length; i++) {
       sum += lanList[i].hostNumber + 2;
     }
-    if (lanList.length > 1) sum += lanList.length * 4;
+    if (lanList.length > 2) sum += lanList.length * 4;
+    else if (lanList.length === 2) sum += 4;
+
     sum = Math.pow(2, Math.ceil(Math.log2(sum)));
     return sum;
   };
@@ -311,7 +313,11 @@ const DashboardLayout = () => {
                   <h6 className="text-warning text-left">
                     <em>
                       *Router-to-Router total host number:{' '}
-                      {lans.length > 1 ? lans.length * 4 : 0}
+                      {lans.length > 1
+                        ? lans.length > 2
+                          ? lans.length * 4
+                          : 4
+                        : 0}
                     </em>
                   </h6>
                   <Table dark className="table-striped table-sm">
