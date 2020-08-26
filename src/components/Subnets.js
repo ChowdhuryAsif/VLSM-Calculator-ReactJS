@@ -15,9 +15,9 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import '../main.css';
 
 const Subnets = (props) => {
-  const ispBinaryIP = localStorage.getItem('ispBinaryIP');
-  const ispIP = localStorage.getItem('ispIP');
-  const ispSubnet = localStorage.getItem('subnet');
+  const ispBinaryIP = sessionStorage.getItem('ispBinaryIP');
+  const ispIP = sessionStorage.getItem('ispIP');
+  const ispSubnet = sessionStorage.getItem('subnet');
 
   let lans = [...props.lans];
   lans.sort((a, b) => b.hostNumber - a.hostNumber);
@@ -122,7 +122,7 @@ const Subnets = (props) => {
                   <th>LAN Name</th>
                   <th>Size</th>
                   <th>Network IP</th>
-                  <th>First Host IP</th>
+                  <th>Gateway IP</th>
                   <th>Last Host IP</th>
                   <th>BroadCast IP</th>
                 </tr>

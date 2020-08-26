@@ -54,9 +54,9 @@ const HomeLayout = (props) => {
         setValidNetAddress(true);
         // checking the network bits and host bits are valid or invalid
         if (isHostPartCorrect(binaryIP, subnet)) {
-          localStorage.setItem('ispBinaryIP', binaryIP); // saving the binaryIP in coockies
-          localStorage.setItem('ispIP', ip); // saving isp ip in coockies
-          localStorage.setItem('subnet', subnet); // saving subnet in coockies
+          sessionStorage.setItem('ispBinaryIP', binaryIP); // saving the binaryIP in coockies
+          sessionStorage.setItem('ispIP', ip); // saving isp ip in coockies
+          sessionStorage.setItem('subnet', subnet); // saving subnet in coockies
 
           setIspIP(ip);
           setIspSubnet(subnet);

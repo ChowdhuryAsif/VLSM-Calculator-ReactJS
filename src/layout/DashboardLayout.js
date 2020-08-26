@@ -31,9 +31,9 @@ import Subnets from '../components/Subnets';
 import '../main.css';
 
 const DashboardLayout = () => {
-  // const ispBinaryIP = localStorage.getItem('ispBinaryIP');
-  const ispIP = localStorage.getItem('ispIP');
-  const ispSubnet = localStorage.getItem('subnet');
+  // const ispBinaryIP = sessionStorage.getItem('ispBinaryIP');
+  const ispIP = sessionStorage.getItem('ispIP');
+  const ispSubnet = sessionStorage.getItem('subnet');
 
   const [lanName, setLanName] = useState('');
   const [hostNumber, setHostNumber] = useState('');
@@ -83,11 +83,13 @@ const DashboardLayout = () => {
   };
 
   const getTotalNetworkSize = (lanList) => {
+    console.log(lanList);
     let sum = 0;
-    for (let i = 0; i < lanList.length; i++)
-      sum += 2 + lanList[i].hostNumber * 1;
-    sum += lanList.length * 4;
-
+    for (let i = 0; i < lanList.length; i++) {
+      sum += lanList[i].hostNumber + 2;
+    }
+    if (lanList.length > 1) sum += lanList.length * 4;
+    sum = Math.pow(2, Math.ceil(Math.log2(sum)));
     return sum;
   };
 
@@ -243,7 +245,7 @@ const DashboardLayout = () => {
                         <span>
                           <FontAwesomeIcon icon={faRedoAlt} />
                         </span>
-                        <span> RESET ALL</span>
+                        <span> RESET</span>
                       </Button>
                     </Col>
                   </Row>
@@ -297,7 +299,7 @@ const DashboardLayout = () => {
             </Row>
           </Col>
           <Col md="6" className="text-light text-center">
-            <h4 className="mb-5">
+            <h4 className="mb-4">
               <span>
                 <FontAwesomeIcon icon={faList} color="#6c757d" />
               </span>
@@ -306,6 +308,12 @@ const DashboardLayout = () => {
             <Row>
               <Col className="mb-5">
                 <div className="lan-table">
+                  <h6 className="text-warning text-left">
+                    <em>
+                      *Router-to-Router total host number:{' '}
+                      {lans.length > 1 ? lans.length * 4 : 0}
+                    </em>
+                  </h6>
                   <Table dark className="table-striped table-sm">
                     <thead>
                       <tr>
